@@ -19,11 +19,25 @@ phases:
       - echo Creating Lambda deployment package...
       - zip -r app.zip . -x "*.git*" "tests/*" ".env"
 
+      - export BUILD_TIME=$(date +%Y%m%d-%H%M%S)
+
+      - echo Current directory...
+      - pwd
+
+      - echo Listing generated files...
+      - ls -la
+
+      - echo Listing report asset folder...
+      - ls -la jest-html-reporters-attach || true
+
       - echo Uploading QA report to S3...
       - aws s3 cp jest_html_reporters.html s3://ai-qa-build-reports/build-$BUILD_TIME/
 
       - echo Uploading report assets...
       - aws s3 cp jest-html-reporters-attach s3://ai-qa-build-reports/build-$BUILD_TIME/jest-html-reporters-attach --recursive
+
+      - echo Verifying S3 upload...
+      - aws s3 ls s3://ai-qa-build-reports/build-$BUILD_TIME/
 
 artifacts:
   files:
