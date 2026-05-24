@@ -1,0 +1,6 @@
+{
+  "publicPath": "./reports",
+  "filename": "index.html",
+  "expand": true,
+  "pageTitle": "AI QA Automation Report"
+}
