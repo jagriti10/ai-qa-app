@@ -17,7 +17,7 @@ router.get("/health", (req, res) => {
   console.log("Health route hit");
 
   res.json({
-    status: "healthy-v2",
+    status: "healthy",
   });
 });
 

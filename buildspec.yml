@@ -16,6 +16,9 @@ phases:
 
   post_build:
     commands:
+      - echo Checking node_modules...
+      - ls node_modules | head -10
+      
       - echo Creating Lambda deployment package...
       - zip -r app.zip . -x "*.git*" "tests/*" ".env"
 
