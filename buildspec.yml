@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+
+    commands:
+      - echo Installing dependencies...
+      - npm install
+
+  build:
+    commands:
+      - echo Running tests...
+      - npm test
+
+  post_build:
+    commands:
+      - echo Creating deployment package...
+      - zip -r app.zip . -x "*.git*" "tests/*" ".env"
+
+artifacts:
+  files:
+    - app.zip
