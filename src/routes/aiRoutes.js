@@ -26,7 +26,6 @@ router.post(
   topicSummary
 );
 
-//this is for testing image description, it will be removed in production
 router.post(
   "/image-description",
   upload.single("image"),
